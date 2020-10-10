@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.manager.mapper.TCourseMapper" >
+  <resultMap id="BaseResultMap" type="com.web.manager.pojo.TCourse" >
+    <id column="N_COURSE_ID" property="nCourseId" jdbcType="INTEGER" />
+    <result column="VC_COURSE_NAME" property="vcCourseName" jdbcType="VARCHAR" />
+    <result column="N_TYPE" property="nType" jdbcType="INTEGER" />
+    <result column="F_CREDIT" property="fCredit" jdbcType="REAL" />
+    <result column="N_GRADE" property="nGrade" jdbcType="INTEGER" />
+    <result column="N_MAJOR" property="nMajor" jdbcType="INTEGER" />
+    <result column="VC_DETAIL" property="vcDetail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    N_COURSE_ID, VC_COURSE_NAME, N_TYPE, F_CREDIT, N_GRADE, N_MAJOR, VC_DETAIL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.manager.pojo.TCourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_course
+    where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_course
+    where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.web.manager.pojo.TCourseExample" >
+    delete from t_course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.web.manager.pojo.TCourse" >
+    insert into t_course (N_COURSE_ID, VC_COURSE_NAME, N_TYPE, 
+      F_CREDIT, N_GRADE, N_MAJOR, 
+      VC_DETAIL)
+    values (#{nCourseId,jdbcType=INTEGER}, #{vcCourseName,jdbcType=VARCHAR}, #{nType,jdbcType=INTEGER}, 
+      #{fCredit,jdbcType=REAL}, #{nGrade,jdbcType=INTEGER}, #{nMajor,jdbcType=INTEGER}, 
+      #{vcDetail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.web.manager.pojo.TCourse" >
+    insert into t_course
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nCourseId != null" >
+        N_COURSE_ID,
+      </if>
+      <if test="vcCourseName != null" >
+        VC_COURSE_NAME,
+      </if>
+      <if test="nType != null" >
+        N_TYPE,
+      </if>
+      <if test="fCredit != null" >
+        F_CREDIT,
+      </if>
+      <if test="nGrade != null" >
+        N_GRADE,
+      </if>
+      <if test="nMajor != null" >
+        N_MAJOR,
+      </if>
+      <if test="vcDetail != null" >
+        VC_DETAIL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nCourseId != null" >
+        #{nCourseId,jdbcType=INTEGER},
+      </if>
+      <if test="vcCourseName != null" >
+        #{vcCourseName,jdbcType=VARCHAR},
+      </if>
+      <if test="nType != null" >
+        #{nType,jdbcType=INTEGER},
+      </if>
+      <if test="fCredit != null" >
+        #{fCredit,jdbcType=REAL},
+      </if>
+      <if test="nGrade != null" >
+        #{nGrade,jdbcType=INTEGER},
+      </if>
+      <if test="nMajor != null" >
+        #{nMajor,jdbcType=INTEGER},
+      </if>
+      <if test="vcDetail != null" >
+        #{vcDetail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.web.manager.pojo.TCourseExample" resultType="java.lang.Integer" >
+    select count(*) from t_course
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_course
+    <set >
+      <if test="record.nCourseId != null" >
+        N_COURSE_ID = #{record.nCourseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.vcCourseName != null" >
+        VC_COURSE_NAME = #{record.vcCourseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nType != null" >
+        N_TYPE = #{record.nType,jdbcType=INTEGER},
+      </if>
+      <if test="record.fCredit != null" >
+        F_CREDIT = #{record.fCredit,jdbcType=REAL},
+      </if>
+      <if test="record.nGrade != null" >
+        N_GRADE = #{record.nGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.nMajor != null" >
+        N_MAJOR = #{record.nMajor,jdbcType=INTEGER},
+      </if>
+      <if test="record.vcDetail != null" >
+        VC_DETAIL = #{record.vcDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_course
+    set N_COURSE_ID = #{record.nCourseId,jdbcType=INTEGER},
+      VC_COURSE_NAME = #{record.vcCourseName,jdbcType=VARCHAR},
+      N_TYPE = #{record.nType,jdbcType=INTEGER},
+      F_CREDIT = #{record.fCredit,jdbcType=REAL},
+      N_GRADE = #{record.nGrade,jdbcType=INTEGER},
+      N_MAJOR = #{record.nMajor,jdbcType=INTEGER},
+      VC_DETAIL = #{record.vcDetail,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.web.manager.pojo.TCourse" >
+    update t_course
+    <set >
+      <if test="vcCourseName != null" >
+        VC_COURSE_NAME = #{vcCourseName,jdbcType=VARCHAR},
+      </if>
+      <if test="nType != null" >
+        N_TYPE = #{nType,jdbcType=INTEGER},
+      </if>
+      <if test="fCredit != null" >
+        F_CREDIT = #{fCredit,jdbcType=REAL},
+      </if>
+      <if test="nGrade != null" >
+        N_GRADE = #{nGrade,jdbcType=INTEGER},
+      </if>
+      <if test="nMajor != null" >
+        N_MAJOR = #{nMajor,jdbcType=INTEGER},
+      </if>
+      <if test="vcDetail != null" >
+        VC_DETAIL = #{vcDetail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.web.manager.pojo.TCourse" >
+    update t_course
+    set VC_COURSE_NAME = #{vcCourseName,jdbcType=VARCHAR},
+      N_TYPE = #{nType,jdbcType=INTEGER},
+      F_CREDIT = #{fCredit,jdbcType=REAL},
+      N_GRADE = #{nGrade,jdbcType=INTEGER},
+      N_MAJOR = #{nMajor,jdbcType=INTEGER},
+      VC_DETAIL = #{vcDetail,jdbcType=VARCHAR}
+    where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+  </update>
+</mapper>

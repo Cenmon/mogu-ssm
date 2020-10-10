@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 加载配置文件 
+	<context:property-placeholder location="classpath*:resource/*.properties" />
+	jdbc:mysql://localhost:3306/taotao?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC
+	root
+	root
+	com.mysql.cj.jdbc.Driver
+	-->
+	
+	<!-- xml中新建bean的方式：直接指定id和class创建
+			利用factory-bean和factory-method通过类方法返回值创建
+				注：factory-method方法需为静态方法，或factory-bean指定在spring中已有的类(类名为bean-name) -->
+	<bean id="httpSolrClientBuilder" class="org.apache.solr.client.solrj.impl.HttpSolrClient.Builder">
+		<constructor-arg name="baseSolrUrl" value="${SOLR.SERVER.URL}"></constructor-arg>
+	</bean>
+	<bean id="httpSolrClient" factory-bean="httpSolrClientBuilder" factory-method="build"></bean>
+	
+	<context:property-placeholder location="classpath*:resource/*.properties" />
+	<!-- 数据库连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		destroy-method="close">
+		<property name="url" value="${Jdbc.url}" />
+		<property name="username" value="${Jdbc.username}" />
+		<property name="password" value="${Jdbc.password}" />
+		<property name="driverClassName" value="${Jdbc.driver}" />
+		<property name="maxActive" value="10" />
+		<property name="minIdle" value="5" />
+	</bean>
+	
+	<!-- 配置sqlsessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis/MybatisConfig.xml"></property>
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置扫描包，加载mapper代理对象，扫描mapper文件，并注入spring容器 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- pom中已经依赖了taotao_manager_mapper -->
+		<property name="basePackage" value="com.taotao.mapper,com.mogu.search.mapper"></property>
+	</bean>
+</beans>

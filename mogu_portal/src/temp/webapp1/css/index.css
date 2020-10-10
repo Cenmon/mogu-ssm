@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+
+#ad{
+    width: 1200px;
+    height: 400px;
+    margin: 10px auto;
+}
+#ad img{
+    width: 1200px;
+    height: 400px;
+}
+#ms{
+    width: 1200px;
+    height: 305px;
+    margin: 0 auto;
+}
+#ms .ms_top{
+    width: 1200px;
+    height: 55px;
+    background-image: url(../images/title_bg.png);
+    background-size: 1200px 55px;
+    line-height: 55px;
+}
+#ms .ms_top span{
+    color: white;
+}
+#ms .ms_top span:first-child{
+    margin:0 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#ms .ms_body{
+    width: 1200px;
+    height: 250px;
+
+}
+#ms .ms_body ul{
+    width: 1200px;
+    height: 250px;
+    list-style: none;
+    display: flex;
+    background: white;
+}
+#ms .ms_body ul li{
+    flex: 1;
+    border-right: 1px solid #ccc;/*增加边框*/
+}
+#ms .ms_body ul li:last-child{
+    border-right: none;
+}
+#ms .ms_body ul a{
+    width: 100%;
+    height: 100%;/*和li元素宽高一致*/
+    color: #6c6c6c;
+}
+#ms .ms_body .ms_title{
+    font-size: 16px;
+    padding: 0 10px;
+    margin: 10px 0;
+    color: #ff242d;
+}
+#ms .ms_body .ms_detail{
+    font-size: 12px;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+#ms .ms_body ul a img{
+    margin-left: 50px;
+    width: 130px;
+    height: 130px;
+    margin-top: 10px;
+}
+.yuan{/*公用的*/
+    color: #ff4400;
+    font-size: 10px;
+}
+.price{
+    color: #ff4400;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+#hot_goods{
+    width: 1200px;
+    margin: 10px auto;
+}
+#hot_goods h3{
+    height: 44px;
+    line-height: 44px;
+    font-size: 22px;
+    color: #ff242d;
+    padding-left: 20px;
+    border-bottom: 1px solid #ff242d;
+    background:#f5f5f5;
+    font-weight: bold;
+}
+#hot_goods .hot_goods_body ul{
+    list-style: none;
+    overflow: hidden;/*清除浮动*/
+}
+#hot_goods .hot_goods_body ul li{/*不是固定一行，不能平分*/
+    width: 235px;
+    height: 315px;
+    background:#f5f5f5;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
+}
+#hot_goods .hot_goods_body ul li:nth-child(5n){/*选择第几个元素,2n为选择2的倍数*/
+    margin-right: 0;
+}
+#hot_goods .hot_goods_body img{
+    width: 220px;
+    height: 218px;
+    display: block;/*图片先设置成为块元素才能居中*/
+    margin: 0 auto;
+}
+#hot_goods .hot_goods_body p{
+    font-size: 13px;
+    padding: 10px 3px;
+    margin-bottom: 5px;
+    color: #ffb4ab;
+}

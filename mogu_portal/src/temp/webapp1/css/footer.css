@@ -1,0 +1,19 @@
+#footer {
+    text-align: center;
+    height: 100px;
+    padding-top: 30px;
+}
+#footer .copyright{
+    padding-top: 10px;
+    font-size: 10px;
+    color: #cccccc;
+}
+#footer .link{
+    margin-left: 5px;/*调整左右空隙*/
+    margin-top: 5px;
+    color: #666;/*设置字体颜色*/
+    font-size: 15px;
+}
+#footer .link a{
+    color: #cccccc;
+}

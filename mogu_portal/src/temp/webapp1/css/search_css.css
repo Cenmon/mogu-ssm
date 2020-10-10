@@ -1,0 +1,139 @@
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    background-image: url("../images/蘑菇商场.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+}
+.h_top_right{
+    float: right;
+    height: 36px;
+
+}
+.h_top_right a{
+    color: #4b4848;
+    margin: 0 5px;
+    font-size: 13px;
+}
+
+.retset{
+    width: 60%;
+    padding-top: 10%;
+    margin: 0 auto;
+    text-align: center;
+    color: rgb(62, 60, 60);
+    font-size: 20px;
+}
+#contex{
+    vertical-align:middle;
+    width: 100%;
+    height: 35px;
+    background-color: #dfc9e3;
+    color: #525050;
+}
+#ret{
+    margin: 0 auto;
+    width: 100%;
+    height:390px;
+}
+#page_num{
+    width: 415px;
+    float: right;
+}
+.detail{
+    width: 100%;
+    height:330px;
+    background-color: #f6f6f6;
+}
+.image{
+    width: 50%;
+    height: 330px;
+    background-color: #4e4e4e;
+    float: left;
+}
+.image img{
+    width: 50%;
+    height: 330px;
+}
+.describe{
+    float: left;
+    width: 50%;
+    font-size: 17px;
+}
+.describe .des_1{
+    width: 90%;
+    margin-top:15px;
+    margin-left: 15px;
+    color: rgba(78, 78, 78, 0.96);
+    text-align: left;
+}
+.describe .des_2{
+    background-color: #ece4ec;
+    width: 90%;
+    margin-top:20px;
+    margin-left: 15px;
+    text-align: left;
+}
+.describe .des_3{
+    margin-top:5px;
+    margin-left: 15px;
+    text-align: left;
+    font-size: 10px;
+    color: #6c6c6c;
+}
+.describe .des_4{
+    margin-top:15px;
+    margin-left: 15px;
+    text-align: left;
+    font-size: 15px;
+    color: #000000;
+}
+.describe .des_5{
+    list-style: none;
+    width: 120px;
+    height: 30px;
+    margin-top: 15px;
+}
+.describe .des_5 input{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    vertical-align:middle;
+    text-align: center;
+    font-size: 16px;
+    color: whitesmoke;
+    background-color: #DF3033;
+}
+.pagin a, .pagin span {
+    background-color: #ffffff;
+    float: left;
+    height: 15px;
+    padding: 3px 10px;
+    border: 1px solid #9e8181;
+    margin-left: 2px;
+    line-height: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px
+}
+.current {
+    border: 0;
+    padding: 4px 11px
+}
+
+.pagin a:link, .pagin a:visited {
+    color: #005aa0
+}
+
+.pagin a:hover, .pagin a:active {
+    background: #005aa0;
+    color: #fff;
+    text-decoration: none
+}
+
+.pagin .current, .pagin .current:link, .pagin .current:visited {
+    color: #f60;
+    font-weight: 700
+}
